@@ -1,0 +1,27 @@
+.TH LSBIN 1
+.SH NAME
+lsbin \- list binaries in JSON format
+.SH SYNOPSIS
+.B lsbin
+.SH DESCRIPTION
+.B lsbin
+lists all binaries in
+.B $PATH
+in JSON format.
+It is originally designed to work with
+.IR cmenu (1).
+The output will be
+.BR "map[<BINARY NAME>]<FULL PATH>" .
+.SH EXAMPLE
+.TP
+.RI "Create a menu for binaries like in " dmenu (1):
+.EX
+.B $ lsbin | cmenu fzf
+.EE
+.SH SEE ALSO
+.IR cmenu (1)
+.IR dmenu (1)
+.IR fzf (1)
+.IR
+.SH AUTHOR
+andrieee44 (andrieee44@gmail.com)
