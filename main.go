@@ -46,7 +46,6 @@ func main() {
 			}
 
 			return err
-
 		})
 	}
 
