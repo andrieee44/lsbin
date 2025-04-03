@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io/fs"
 	"os"
@@ -27,6 +28,11 @@ func main() {
 	bins = make(map[string]string)
 
 	for _, path = range filepath.SplitList(os.Getenv("PATH")) {
+		path, err = filepath.EvalSymlinks(path)
+		if err != nil && !errors.Is(err, fs.ErrNotExist) {
+			panic(err)
+		}
+
 		filepath.Walk(path, func(path string, info fs.FileInfo, err error) error {
 			if err != nil {
 				return err
